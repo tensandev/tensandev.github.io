@@ -1,106 +1,518 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>テンさん/Tensan</title>
-	<link rel="icon" href="/image/favicon.ico">
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<meta name="viewport" content="width=device-width">
-	<script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-	<script src="https://cdn.jsdelivr.net/npm/preline@2.7.0/dist/preline.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/tailgrids@2.2.2/plugin.min.js"></script>
-	<link href="/dist/styles.css" rel="stylesheet">
+    <title>テンさん/Tensan</title>
+    <link rel="icon" href="/image/favicon.ico">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="/dist/style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/preline@2.7.0/dist/preline.min.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 
-<body class="bg-white">
-	<header
-		class="inset-x-0 top-0 z-50 bg-black sticky flex flex-wrap md:justify-start md:flex-nowrap w-full before:absolute before:inset-0 before:max-w-[66rem] before:mx-2 before:lg:mx-auto before:rounded-[26px] before:bg-neutral-800/30 before:backdrop-blur-md">
-		<nav
-			class="relative max-w-[66rem] w-full py-2.5 ps-5 pe-2 md:flex md:items-center md:justify-between md:py-0 mx-2 lg:mx-auto">
-			<div class="flex items-center justify-between">
-				<div class="flex items-center">
-					<!-- Logo -->
-					<a class="flex-none rounded-md text-xl inline-block font-semibold focus:outline-none focus:opacity-80"
-						href="/" aria-label="Preline">
-						<svg class="h-4 w-auto" width="853" height="90" viewBox="0 0 853 90" fill="none"
-							xmlns="http://www.w3.org/2000/svg">
-							<path
-								d="M17.2177 50.8113L31.5653 33.4377C27.5101 32.2609 20.6727 28.4885 23.9981 22.552C26.1162 18.7712 34.5092 19.8226 41.0653 21.9365L54.7626 5.70059C46.7735 1.79724 27.8875 -3.75769 13.9396 3.70505C7.18289 7.31458 2.62643 13.2608 0.764572 20.9018C-0.927392 27.8354 0.200584 34.489 4.03153 40.1345C7.39039 45.0865 12.334 48.4718 17.2177 50.8113Z"
-								fill="white" />
-							<path d="M185.289 0.118843H114.924V19.9768H185.289V0.118843Z" fill="white" />
-							<path d="M160.683 88.6149H139.53V36.3812H160.683V88.6149Z" fill="white" />
-							<path d="M852.05 0.118843H781.686V19.9768H852.05V0.118843Z" fill="white" />
-							<path d="M827.443 88.6149H806.29V36.3812H827.443V88.6149Z" fill="white" />
-							<path d="M277.82 68.4361L258.952 22.8701L231.692 88.6144H254.269L262.624 68.4361H277.82Z"
-								fill="white" />
-							<path
-								d="M440.916 43.743C444.164 42.6262 450.081 39.4679 450.613 30.5652C451.128 21.9313 449.61 0.11961 424.361 0.11961H404.446L440.916 43.743Z"
-								fill="white" />
-							<path
-								d="M417.02 44.5413H400.248V24.4689L380.196 0.468048V88.6145H402.08V58.5226L426.168 88.6145H453.843L417.02 44.5413Z"
-								fill="white" />
-							<path
-								d="M698.141 67.0163C695.019 68.4646 691.574 69.3307 687.905 69.3307C674.414 69.3307 663.476 58.3935 663.476 44.9024C663.476 40.3599 664.798 36.1599 666.958 32.5169L652.84 16.8979C646.697 24.5793 643.003 34.3036 643.003 44.9024C643.003 69.7012 663.106 89.8042 687.905 89.8042C696.88 89.8042 705.22 87.143 712.234 82.6074L698.141 67.0163Z"
-								fill="white" />
-							<path
-								d="M680.911 21.6126C683.14 20.9428 685.458 20.4735 687.906 20.4735C701.397 20.4735 712.334 31.4107 712.334 44.9018C712.334 48.2314 711.657 51.4009 710.451 54.2933L724.92 70.3008C729.887 63.0748 732.808 54.3323 732.808 44.9018C732.808 20.1031 712.705 1.52588e-05 687.906 1.52588e-05C680.094 1.52588e-05 672.753 2.00253 666.354 5.509L680.911 21.6126Z"
-								fill="white" />
-							<path d="M290.584 0.467926H266.995L302.05 88.6144H325.639L290.584 0.467926Z" fill="white" />
-							<path
-								d="M48.2021 39.2109L33.8545 56.5845C37.9097 57.7612 44.7472 61.5336 41.4217 67.4701C39.3036 71.251 30.9107 70.1996 24.3545 68.0857L10.6572 84.3216C18.6464 88.2249 37.5323 93.7798 51.4802 86.3171C58.2369 82.7076 62.7934 76.7613 64.6553 69.1203C66.3472 62.1868 65.2192 55.5331 61.3883 49.8876C58.0294 44.9357 53.0858 41.5504 48.2021 39.2109Z"
-								fill="white" />
-							<path
-								d="M526.193 0.4673L542.666 20.3907H548.424C561.762 20.3907 572.574 31.2026 572.574 44.5405C572.574 47.9565 571.857 51.2012 570.577 54.1464L584.064 70.4575C589.363 63.1828 592.497 54.23 592.497 44.5405C592.497 20.1999 572.765 0.4673 548.424 0.4673H534.411H526.193Z"
-								fill="white" />
-							<path
-								d="M556.784 67.1745C554.176 68.1381 551.367 68.6924 548.423 68.6924H534.411V40.1156L512.273 13.3422V88.6144H526.932H548.423C556.22 88.6144 563.539 86.5812 569.894 83.0288L556.784 67.1745Z"
-								fill="white" />
-						</svg>
-					</a>
-					<!-- End Logo -->
-				</div>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
 
-				<div class="md:hidden">
-					<button type="button"
-						class="hs-collapse-toggle size-8 flex justify-center items-center text-sm font-semibold rounded-full bg-neutral-800 text-white disabled:opacity-50 disabled:pointer-events-none"
-						id="hs-navbar-floating-dark-collapse" aria-expanded="false"
-						aria-controls="hs-navbar-floating-dark" aria-label="Toggle navigation"
-						data-hs-collapse="#hs-navbar-floating-dark">
-						<svg class="hs-collapse-open:hidden shrink-0 size-4" xmlns="http://www.w3.org/2000/svg"
-							width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-							stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-							<line x1="3" x2="21" y1="6" y2="6" />
-							<line x1="3" x2="21" y1="12" y2="12" />
-							<line x1="3" x2="21" y1="18" y2="18" />
-						</svg>
-						<svg class="hs-collapse-open:block hidden shrink-0 size-4" xmlns="http://www.w3.org/2000/svg"
-							width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-							stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-							<path d="M18 6 6 18" />
-							<path d="m6 6 12 12" />
-						</svg>
-					</button>
-				</div>
-			</div>
+        function MyApp() {
+            const vertexShader = `
+varying vec2 vUv;
+uniform float uTime;
+uniform float mouse;
+uniform float uEnableWaves;
 
-			<!-- Collapse -->
-			<div id="hs-navbar-floating-dark"
-				class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block"
-				aria-labelledby="hs-navbar-floating-dark-collapse">
-				<div class="flex flex-col md:flex-row md:items-center md:justify-end py-3 md:py-0 md:ps-7">
-					<a class="p-4 ps-px sm:px-3 md:py-4 text-sm text-white hover:text-neutral-300 focus:outline-none focus:text-neutral-300"
-						href="/product/">製品</a>
-					<a class="p-4 ps-px sm:px-3 md:py-4 text-sm text-white hover:text-neutral-300 focus:outline-none focus:text-neutral-300"
-						href="/solution/">ソリューション</a>
-					<a class="p-4 ps-px sm:px-3 md:py-4 text-sm text-white hover:text-neutral-300 focus:outline-none focus:text-neutral-300"
-						href="/prices/">価格</a>
-					<a class="p-4 ps-px sm:px-3 md:py-4 text-sm text-white hover:text-neutral-300 focus:outline-none focus:text-neutral-300"
-						href="/blog/">ブログ</a>
-				</div>
-			</div>
-			<!-- End Collapse -->
-		</nav>
-	</header>
-	<main class="z-50"></main>
+void main() {
+    vUv = uv;
+    float time = uTime * 5.;
+
+    float waveFactor = uEnableWaves;
+
+    vec3 transformed = position;
+
+    transformed.x += sin(time + position.y) * 0.5 * waveFactor;
+    transformed.y += cos(time + position.z) * 0.15 * waveFactor;
+    transformed.z += sin(time + position.x) * waveFactor;
+
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(transformed, 1.0);
+}
+`;
+
+            const fragmentShader = `
+varying vec2 vUv;
+uniform float mouse;
+uniform float uTime;
+uniform sampler2D uTexture;
+
+void main() {
+    float time = uTime;
+    vec2 pos = vUv;
+    
+    float move = sin(time + mouse) * 0.01;
+    float r = texture2D(uTexture, pos + cos(time * 2. - time + pos.x) * .01).r;
+    float g = texture2D(uTexture, pos + tan(time * .5 + pos.x - time) * .01).g;
+    float b = texture2D(uTexture, pos - cos(time * 2. + time + pos.y) * .01).b;
+    float a = texture2D(uTexture, pos).a;
+    gl_FragColor = vec4(r, g, b, a);
+}
+`;
+
+            Math.map = function (n, start, stop, start2, stop2) {
+                return ((n - start) / (stop - start)) * (stop2 - start2) + start2;
+            };
+
+            const PX_RATIO = typeof window !== 'undefined' ? window.devicePixelRatio : 1;
+
+            class AsciiFilter {
+                constructor(renderer, { fontSize, fontFamily, charset, invert } = {}) {
+                    this.renderer = renderer;
+                    // container for ASCII overlay
+                    this.domElement = document.createElement('div');
+                    this.domElement.style.position = 'absolute';
+                    this.domElement.style.top = '0';
+                    this.domElement.style.left = '0';
+                    this.domElement.style.width = '100%';
+                    this.domElement.style.height = '100%';
+
+                    this.pre = document.createElement('pre');
+                    this.domElement.appendChild(this.pre);
+
+                    this.canvas = document.createElement('canvas');
+                    this.context = this.canvas.getContext('2d');
+                    this.domElement.appendChild(this.canvas);
+
+                    this.deg = 0;
+                    this.invert = invert ?? true;
+                    this.fontSize = fontSize ?? 12;
+                    this.fontFamily = fontFamily ?? "'Courier New', monospace";
+                    this.charset =
+                        charset ??
+                        " .'`^\",:;Il!i~+_-?][}{1)(|/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
+
+                    this.context.webkitImageSmoothingEnabled = false;
+                    this.context.mozImageSmoothingEnabled = false;
+                    this.context.msImageSmoothingEnabled = false;
+                    this.context.imageSmoothingEnabled = false;
+
+                    document.addEventListener('mousemove', (e) => this.onMouseMove(e), false);
+                }
+
+                setSize(width, height) {
+                    this.width = width;
+                    this.height = height;
+                    this.renderer.setSize(width, height);
+                    this.reset();
+
+                    this.center = { x: width / 2, y: height / 2 };
+                    this.mouse = { x: this.center.x, y: this.center.y };
+                }
+
+                reset() {
+                    this.context.font = `${this.fontSize}px ${this.fontFamily}`;
+                    const charWidth = this.context.measureText('A').width;
+
+                    this.cols = Math.floor(
+                        this.width / (this.fontSize * (charWidth / this.fontSize))
+                    );
+                    this.rows = Math.floor(this.height / this.fontSize);
+
+                    this.canvas.width = this.cols;
+                    this.canvas.height = this.rows;
+                    this.pre.style.fontFamily = this.fontFamily;
+                    this.pre.style.fontSize = `${this.fontSize}px`;
+                    this.pre.style.margin = '0';
+                    this.pre.style.padding = '0';
+                    this.pre.style.lineHeight = '1em';
+                    this.pre.style.position = 'absolute';
+                    this.pre.style.left = '50%';
+                    this.pre.style.top = '50%';
+                    this.pre.style.transform = 'translate(-50%, -50%)';
+                    this.pre.style.zIndex = '9';
+                    this.pre.style.backgroundAttachment = 'fixed';
+                    this.pre.style.mixBlendMode = 'difference';
+                }
+
+                render(scene, camera) {
+                    this.renderer.render(scene, camera);
+
+                    const w = this.canvas.width;
+                    const h = this.canvas.height;
+                    this.context.clearRect(0, 0, w, h);
+                    if (this.context && w && h) {
+                        this.context.drawImage(this.renderer.domElement, 0, 0, w, h);
+                    }
+
+                    this.asciify(this.context, w, h);
+                    this.hue();
+                }
+
+                onMouseMove(e) {
+                    this.mouse = { x: e.clientX * PX_RATIO, y: e.clientY * PX_RATIO };
+                }
+
+                get dx() {
+                    return this.mouse.x - this.center.x;
+                }
+
+                get dy() {
+                    return this.mouse.y - this.center.y;
+                }
+
+                hue() {
+                    const deg = (Math.atan2(this.dy, this.dx) * 180) / Math.PI;
+                    this.deg += (deg - this.deg) * 0.075;
+                    this.domElement.style.filter = `hue-rotate(${this.deg.toFixed(1)}deg)`;
+                }
+
+                asciify(ctx, w, h) {
+                    if (w && h) {
+                        const imgData = ctx.getImageData(0, 0, w, h).data;
+                        let str = '';
+                        for (let y = 0; y < h; y++) {
+                            for (let x = 0; x < w; x++) {
+                                const i = x * 4 + y * 4 * w;
+                                const [r, g, b, a] = [
+                                    imgData[i],
+                                    imgData[i + 1],
+                                    imgData[i + 2],
+                                    imgData[i + 3],
+                                ];
+
+                                if (a === 0) {
+                                    str += ' ';
+                                    continue;
+                                }
+
+                                let gray = (0.3 * r + 0.6 * g + 0.1 * b) / 255;
+                                let idx = Math.floor((1 - gray) * (this.charset.length - 1));
+                                if (this.invert) idx = this.charset.length - idx - 1;
+                                str += this.charset[idx];
+                            }
+                            str += '\n';
+                        }
+                        this.pre.innerHTML = str;
+                    }
+                }
+            }
+
+            class CanvasTxt {
+                constructor(txt, { fontSize = 200, fontFamily = 'Arial', color = '#fdf9f3' } = {}) {
+                    this.canvas = document.createElement('canvas');
+                    this.context = this.canvas.getContext('2d');
+                    this.txt = txt;
+                    this.fontSize = fontSize;
+                    this.fontFamily = fontFamily;
+                    this.color = color;
+
+                    this.font = `600 ${this.fontSize}px ${this.fontFamily}`;
+                }
+
+                resize() {
+                    this.context.font = this.font;
+                    const metrics = this.context.measureText(this.txt);
+
+                    const textWidth = Math.ceil(metrics.width) + 20;
+                    const textHeight =
+                        Math.ceil(metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent) + 20;
+
+                    this.canvas.width = textWidth;
+                    this.canvas.height = textHeight;
+                }
+
+                render() {
+                    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                    this.context.fillStyle = this.color;
+                    this.context.font = this.font;
+
+                    const metrics = this.context.measureText(this.txt);
+                    const yPos = 10 + metrics.actualBoundingBoxAscent;
+
+                    this.context.fillText(this.txt, 10, yPos);
+                }
+
+                get width() {
+                    return this.canvas.width;
+                }
+
+                get height() {
+                    return this.canvas.height;
+                }
+
+                get texture() {
+                    return this.canvas;
+                }
+            }
+
+            class CanvAscii {
+                constructor(
+                    { text, asciiFontSize, textFontSize, textColor, planeBaseHeight, enableWaves },
+                    containerElem,
+                    width,
+                    height
+                ) {
+                    this.textString = text;
+                    this.asciiFontSize = asciiFontSize;
+                    this.textFontSize = textFontSize;
+                    this.textColor = textColor;
+                    this.planeBaseHeight = planeBaseHeight;
+                    this.container = containerElem;
+                    this.width = width;
+                    this.height = height;
+                    this.enableWaves = enableWaves;
+
+                    this.camera = new THREE.PerspectiveCamera(45, this.width / this.height, 1, 1000);
+                    this.camera.position.z = 30;
+
+                    this.scene = new THREE.Scene();
+                    this.mouse = { x: 0, y: 0 };
+
+                    this.setMesh();
+                    this.setRenderer();
+                }
+
+                setMesh() {
+                    this.textCanvas = new CanvasTxt(this.textString, {
+                        fontSize: this.textFontSize,
+                        fontFamily: 'IBM Plex Mono',
+                        color: this.textColor,
+                    });
+                    this.textCanvas.resize();
+                    this.textCanvas.render();
+
+                    this.texture = new THREE.CanvasTexture(this.textCanvas.texture);
+                    this.texture.minFilter = THREE.NearestFilter;
+
+                    const textAspect = this.textCanvas.width / this.textCanvas.height;
+                    const baseH = this.planeBaseHeight;
+                    const planeW = baseH * textAspect;
+                    const planeH = baseH;
+
+                    this.geometry = new THREE.PlaneGeometry(planeW, planeH, 36, 36);
+                    this.material = new THREE.ShaderMaterial({
+                        vertexShader,
+                        fragmentShader,
+                        transparent: true,
+                        uniforms: {
+                            uTime: { value: 0 },
+                            mouse: { value: 1.0 },
+                            uTexture: { value: this.texture },
+                            uEnableWaves: { value: this.enableWaves ? 1.0 : 0.0 }
+                        },
+                    });
+
+                    this.mesh = new THREE.Mesh(this.geometry, this.material);
+                    this.scene.add(this.mesh);
+                }
+
+                setRenderer() {
+                    this.renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
+                    this.renderer.setPixelRatio(1);
+                    this.renderer.setClearColor(0x000000, 0);
+
+                    this.filter = new AsciiFilter(this.renderer, {
+                        fontFamily: 'IBM Plex Mono',
+                        fontSize: this.asciiFontSize,
+                        invert: true,
+                    });
+
+                    this.container.appendChild(this.filter.domElement);
+                    this.setSize(this.width, this.height);
+
+                    this.container.addEventListener('mousemove', (e) => this.onMouseMove(e), false);
+                    this.container.addEventListener('touchmove', (e) => this.onMouseMove(e), false);
+                }
+
+                setSize(w, h) {
+                    this.width = w;
+                    this.height = h;
+
+                    this.camera.aspect = w / h;
+                    this.camera.updateProjectionMatrix();
+
+                    this.filter.setSize(w, h);
+
+                    this.center = { x: w / 2, y: h / 2 };
+                }
+
+                load() {
+                    this.animate();
+                }
+
+                onMouseMove(evt) {
+                    const e = evt.touches ? evt.touches[0] : evt;
+                    // container coords
+                    const bounds = this.container.getBoundingClientRect();
+                    const x = e.clientX - bounds.left;
+                    const y = e.clientY - bounds.top;
+                    this.mouse = { x, y };
+                }
+
+                animate() {
+                    requestAnimationFrame(() => this.animate());
+                    this.render();
+                }
+
+                render() {
+                    const time = new Date().getTime() * 0.001;
+
+                    this.textCanvas.render();
+                    this.texture.needsUpdate = true;
+
+                    this.mesh.material.uniforms.uTime.value = Math.sin(time);
+
+                    this.updateRotation();
+                    this.filter.render(this.scene, this.camera);
+                }
+
+                updateRotation() {
+                    const x = Math.map(this.mouse.y, 0, this.height, 0.5, -0.5);
+                    const y = Math.map(this.mouse.x, 0, this.width, -0.5, 0.5);
+
+                    this.mesh.rotation.x += (x - this.mesh.rotation.x) * 0.05;
+                    this.mesh.rotation.y += (y - this.mesh.rotation.y) * 0.05;
+                }
+
+                dispose() {
+                    this.container.removeChild(this.filter.domElement);
+                    this.renderer.dispose();
+                }
+            }
+
+            // =========== React component ===========
+            export default function ASCIIText({
+                text = 'David!',
+                asciiFontSize = 8,
+                textFontSize = 200,
+                textColor = '#fdf9f3',
+                planeBaseHeight = 8,
+                enableWaves = true
+            }) {
+                const containerRef = useRef(null);
+                const asciiRef = useRef(null);
+
+                useEffect(() => {
+                    if (!containerRef.current) return;
+
+                    // measure container
+                    const { width, height } = containerRef.current.getBoundingClientRect();
+
+                    // create the ASCII scene
+                    asciiRef.current = new CanvAscii(
+                        { text, asciiFontSize, textFontSize, textColor, planeBaseHeight, enableWaves },
+                        containerRef.current,
+                        width,
+                        height
+                    );
+                    asciiRef.current.load();
+
+                    const ro = new ResizeObserver((entries) => {
+                        if (!entries[0]) return;
+                        const { width: w, height: h } = entries[0].contentRect;
+                        asciiRef.current.setSize(w, h);
+                    });
+                    ro.observe(containerRef.current);
+
+                    return () => {
+                        ro.disconnect();
+                        if (asciiRef.current) {
+                            asciiRef.current.dispose();
+                        }
+                    };
+                }, [text, asciiFontSize, textFontSize, textColor, planeBaseHeight, enableWaves]);
+                return <header
+                    className="inset-x-0 top-0 z-50 bg-white sticky flex flex-wrap md:justify-start md:flex-nowrap w-full before:absolute before:inset-0 before:max-w-[66rem] before:mx-2 before:lg:mx-auto before:rounded-[26px] before:bg-white before:backdrop-blur-md border-b-2">
+                    <nav
+                        className="relative max-w-[66rem] w-full py-2.5 ps-5 pe-2 md:flex md:items-center md:justify-between md:py-0 mx-2 lg:mx-auto">
+                        <div className="flex items-center justify-between">
+                            <div className="flex items-center">
+                                <a className="flex-none rounded-md text-xl inline-block font-semibold focus:outline-none focus:opacity-80"
+                                    href="#" aria-label="Preline">
+                                    <svg className="h-4 w-auto" width="853" height="90" viewBox="0 0 853 90" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M17.2177 50.8113L31.5653 33.4377C27.5101 32.2609 20.6727 28.4885 23.9981 22.552C26.1162 18.7712 34.5092 19.8226 41.0653 21.9365L54.7626 5.70059C46.7735 1.79724 27.8875 -3.75769 13.9396 3.70505C7.18289 7.31458 2.62643 13.2608 0.764572 20.9018C-0.927392 27.8354 0.200584 34.489 4.03153 40.1345C7.39039 45.0865 12.334 48.4718 17.2177 50.8113Z"
+                                            fill="black" />
+                                        <path d="M185.289 0.118843H114.924V19.9768H185.289V0.118843Z" fill="black" />
+                                        <path d="M160.683 88.6149H139.53V36.3812H160.683V88.6149Z" fill="black" />
+                                        <path d="M852.05 0.118843H781.686V19.9768H852.05V0.118843Z" fill="black" />
+                                        <path d="M827.443 88.6149H806.29V36.3812H827.443V88.6149Z" fill="black" />
+                                        <path d="M277.82 68.4361L258.952 22.8701L231.692 88.6144H254.269L262.624 68.4361H277.82Z"
+                                            fill="black" />
+                                        <path
+                                            d="M440.916 43.743C444.164 42.6262 450.081 39.4679 450.613 30.5652C451.128 21.9313 449.61 0.11961 424.361 0.11961H404.446L440.916 43.743Z"
+                                            fill="black" />
+                                        <path
+                                            d="M417.02 44.5413H400.248V24.4689L380.196 0.468048V88.6145H402.08V58.5226L426.168 88.6145H453.843L417.02 44.5413Z"
+                                            fill="black" />
+                                        <path
+                                            d="M698.141 67.0163C695.019 68.4646 691.574 69.3307 687.905 69.3307C674.414 69.3307 663.476 58.3935 663.476 44.9024C663.476 40.3599 664.798 36.1599 666.958 32.5169L652.84 16.8979C646.697 24.5793 643.003 34.3036 643.003 44.9024C643.003 69.7012 663.106 89.8042 687.905 89.8042C696.88 89.8042 705.22 87.143 712.234 82.6074L698.141 67.0163Z"
+                                            fill="black" />
+                                        <path
+                                            d="M680.911 21.6126C683.14 20.9428 685.458 20.4735 687.906 20.4735C701.397 20.4735 712.334 31.4107 712.334 44.9018C712.334 48.2314 711.657 51.4009 710.451 54.2933L724.92 70.3008C729.887 63.0748 732.808 54.3323 732.808 44.9018C732.808 20.1031 712.705 1.52588e-05 687.906 1.52588e-05C680.094 1.52588e-05 672.753 2.00253 666.354 5.509L680.911 21.6126Z"
+                                            fill="black" />
+                                        <path d="M290.584 0.467926H266.995L302.05 88.6144H325.639L290.584 0.467926Z" fill="black" />
+                                        <path
+                                            d="M48.2021 39.2109L33.8545 56.5845C37.9097 57.7612 44.7472 61.5336 41.4217 67.4701C39.3036 71.251 30.9107 70.1996 24.3545 68.0857L10.6572 84.3216C18.6464 88.2249 37.5323 93.7798 51.4802 86.3171C58.2369 82.7076 62.7934 76.7613 64.6553 69.1203C66.3472 62.1868 65.2192 55.5331 61.3883 49.8876C58.0294 44.9357 53.0858 41.5504 48.2021 39.2109Z"
+                                            fill="black" />
+                                        <path
+                                            d="M526.193 0.4673L542.666 20.3907H548.424C561.762 20.3907 572.574 31.2026 572.574 44.5405C572.574 47.9565 571.857 51.2012 570.577 54.1464L584.064 70.4575C589.363 63.1828 592.497 54.23 592.497 44.5405C592.497 20.1999 572.765 0.4673 548.424 0.4673H534.411H526.193Z"
+                                            fill="black" />
+                                        <path
+                                            d="M556.784 67.1745C554.176 68.1381 551.367 68.6924 548.423 68.6924H534.411V40.1156L512.273 13.3422V88.6144H526.932H548.423C556.22 88.6144 563.539 86.5812 569.894 83.0288L556.784 67.1745Z"
+                                            fill="black" />
+                                    </svg>
+                                </a>
+                            </div>
+
+                            <div className="md:hidden">
+                                <button type="button"
+                                    className="hs-collapse-toggle size-8 flex justify-center items-center text-sm font-semibold rounded-full bg-white text-black disabled:opacity-50 disabled:pointer-events-none"
+                                    id="hs-navbar-floating-dark-collapse" aria-expanded="false"
+                                    aria-controls="hs-navbar-floating-dark" aria-label="Toggle navigation"
+                                    data-hs-collapse="#hs-navbar-floating-dark">
+                                    <svg className="hs-collapse-open:hidden shrink-0 size-4" xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <line x1="3" x2="21" y1="6" y2="6" />
+                                        <line x1="3" x2="21" y1="12" y2="12" />
+                                        <line x1="3" x2="21" y1="18" y2="18" />
+                                    </svg>
+                                    <svg className="hs-collapse-open:block hidden shrink-0 size-4" xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <path d="M18 6 6 18" />
+                                        <path d="m6 6 12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="hs-navbar-floating-dark"
+                            className="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block"
+                            aria-labelledby="hs-navbar-floating-dark-collapse">
+                            <div className="flex flex-col md:flex-row md:items-center md:justify-end py-3 md:py-0 md:ps-7">
+                                <a className="p-4 ps-px sm:px-3 md:py-4 text-sm text-black hover:text-neutral-400 focus:outline-none focus:text-neutral-300"
+                                    href="#">YouTube</a>
+                                <a className="p-4 ps-px sm:px-3 md:py-4 text-sm text-black hover:text-neutral-400 focus:outline-none focus:text-neutral-300"
+                                    href="#">Twitter</a>
+                                <a className="p-4 ps-px sm:px-3 md:py-4 text-sm text-black hover:text-neutral-400 focus:outline-none focus:text-neutral-300"
+                                    href="#">Twitch</a>
+                                <a className="p-4 ps-px sm:px-3 md:py-4 text-sm text-black hover:text-neutral-400 focus:outline-none focus:text-neutral-300"
+                                    href="#">GitHub</a>
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+                
+                    ;
+            }
+
+            const container = document.getElementById('root');
+            const root = ReactDOM.createRoot(container);
+            root.render(<MyApp />);
+
+    </script>
 </body>
 
 </html>
