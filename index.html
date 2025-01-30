@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width">
   <link href="/dist/style.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/preline@2.7.0/dist/preline.min.js"></script>
+  <script src="/dist/main.js"></script>
 </head>
 
 <body>
@@ -19,7 +20,7 @@
         <div class="flex items-center">
           <a class="flex-none text-xl focus:outline-none focus:opacity-80" href="#" aria-label="Brand">
             <span class="inline-flex items-center gap-x-2 text-lg">
-              <img src="/image/アイコン.webp" class="w-10 h-auto" />
+              <img src="/image/アイコン.webp" class="w-10 h-auto rounded-full" />
               <span class="ml-2">テンさん/Tensan</span>
             </span>
           </a>
@@ -65,8 +66,146 @@
     </nav>
   </header>
   <main class="z-50">
+    <section class="text-gray-600 body-font">
+      <div class="container mx-auto flex px-5 py-8 items-center justify-center flex-col">
+        <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-4 object-cover object-center rounded" alt="hero" src="/image/ふちなし.webp">
+        <div class="text-center lg:w-2/3 w-full">
+          <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">こんにちは!!!</h1>
+          <p class="mb-8 leading-relaxed text-pretty">どうも！かわいいテンさんです！！！<br/>
+            私は限界アルバイト高校生であり、日曜エンジニアでもあります！！！<br/>
+            いつもの悩みは学費がないことです！お仕事はできませんが、趣味で活動しています！！！<br/>
+            このサイトはたまに更新します!!!<br/>
+            どうですか!?私のツイッター・YouTube・Twitch・GitHubのアカウント<br/>
+            全てをフォローして監視してみませんか！？<br/>
+            (* 'ᵕ' )ｲｲﾖｯ!(* 'ᵕ' )ｲｲﾖｯ!(* 'ᵕ' )ｲｲﾖｯ!
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- Card Section -->
+    <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <!-- Grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <!-- Card -->
+        <div class="flex flex-col bg-white border shadow-sm rounded-xl">
+          <div class="p-4 md:p-5 flex gap-x-4">
+            <div class="shrink-0 flex justify-center items-center size-[46px] bg-gray-100 rounded-lg">
+              <svg class="shrink-0 size-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+
+            <div class="grow">
+              <div class="flex items-center gap-x-2">
+                <p class="text-xs uppercase tracking-wide text-gray-500">
+                  来た人
+                </p>
+              </div>
+              <div class="mt-1 flex items-center gap-x-2">
+                <h3 class="text-xl sm:text-2xl font-medium text-gray-800">
+                  ∞人
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Card -->
+
+        <!-- Card -->
+        <div class="flex flex-col bg-white border shadow-sm rounded-xl">
+          <div class="p-4 md:p-5 flex gap-x-4">
+            <div class="shrink-0 flex justify-center items-center size-[46px] bg-gray-100 rounded-lg">
+              <svg class="shrink-0 size-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M5 22h14" />
+                <path d="M5 2h14" />
+                <path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22" />
+                <path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2" />
+              </svg>
+            </div>
+
+            <div class="grow">
+              <div class="flex items-center gap-x-2">
+                <p class="text-xs uppercase tracking-wide text-gray-500">
+                  あなたが来た回数
+                </p>
+              </div>
+              <div class="mt-1 flex items-center gap-x-2">
+                <h3 id="your_session" class="text-xl font-medium text-gray-800">
+                  Loading...
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Card -->
+
+        <!-- Card -->
+        <div class="flex flex-col bg-white border shadow-sm rounded-xl">
+          <div class="p-4 md:p-5 flex gap-x-4">
+            <div class="shrink-0 flex justify-center items-center size-[46px] bg-gray-100 rounded-lg">
+              <svg class="shrink-0 size-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
+                height="100" viewBox="0 0 50 50">
+                <path
+                  d="M 5.9199219 6 L 20.582031 27.375 L 6.2304688 44 L 9.4101562 44 L 21.986328 29.421875 L 31.986328 44 L 44 44 L 28.681641 21.669922 L 42.199219 6 L 39.029297 6 L 27.275391 19.617188 L 17.933594 6 L 5.9199219 6 z M 9.7167969 8 L 16.880859 8 L 40.203125 42 L 33.039062 42 L 9.7167969 8 z">
+                </path>
+              </svg>
+            </div>
+
+            <div class="grow">
+              <div class="flex items-center gap-x-2">
+                <p class="text-xs uppercase tracking-wide text-gray-500">
+                  ツイッターのフォロワー数
+                </p>
+              </div>
+              <div class="mt-1 flex items-center gap-x-2">
+                <h3 class="text-xl sm:text-2xl font-medium text-gray-800">
+                  ∞人
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Card -->
+        
+        <!-- Card -->
+        <div class="flex flex-col bg-white border shadow-sm rounded-xl">
+          <div class="p-4 md:p-5 flex gap-x-4">
+            <div class="shrink-0 flex justify-center items-center size-[46px] bg-gray-100 rounded-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class=" shrink-0 size-5 text-gray-600">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M3 3v1.5M3 21v-6m0 0 2.77-.693a9 9 0 0 1 6.208.682l.108.054a9 9 0 0 0 6.086.71l3.114-.732a48.524 48.524 0 0 1-.005-10.499l-3.11.732a9 9 0 0 1-6.085-.711l-.108-.054a9 9 0 0 0-6.208-.682L3 4.5M3 15V4.5" />
+              </svg>
+            </div>
+
+            <div class="grow">
+              <div class="flex items-center gap-x-2">
+                <p class="text-xs uppercase tracking-wide text-gray-500">
+                  テンは起きていますか!?
+                </p>
+              </div>
+              <div class="mt-1 flex items-center gap-x-2">
+                <h3 class="text-xl font-medium text-gray-800">
+                  いつでも！！！
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Card -->
+      </div>
+      <!-- End Grid -->
+    </div>
+    <!-- End Card Section -->
     <div class="md:grid grid-cols-12 gap-4 mx-8 block">
-      <div class="col-span-4 my-8">
+      <div class="col-span-4 mt-8">
         <a href="https://stardot.io" class="group relative block h-64 sm:h-80 lg:h-96">
           <span class="absolute inset-0 border-2 border-dashed border-black"></span>
 
@@ -91,12 +230,12 @@
                 人やアイデアをつなぎ、誰もが利用できるシンプルでオープンなサービスを提供するプラットフォームサイト
               </p>
 
-              <p class="mt-8 font-bold">もっと見る→</p>
+              <p class="mt-8 font-bold">もっと見る→（準備中）</p>
             </div>
           </div>
         </a>
       </div>
-      <div class="col-span-4 my-8">
+      <div class="col-span-4 mt-8">
         <a href="https://flattide.style" class="group relative block h-64 sm:h-80 lg:h-96">
           <span class="absolute inset-0 border-2 border-dashed border-black"></span>
 
@@ -129,19 +268,20 @@
                 独自のコンセプトデザインを通じて、新しいアイデアやプロダクトを発信するためのサイト
               </p>
 
-              <p class="mt-8 font-bold">もっと見る→</p>
+              <p class="mt-8 font-bold">もっと見る→（準備中）</p>
             </div>
           </div>
         </a>
       </div>
-      <div class="col-span-4 my-8">
+      <div class="col-span-4 mt-8">
         <a href="https://github.com/tensandev" class="group relative block h-64 sm:h-80 lg:h-96">
           <span class="absolute inset-0 border-2 border-dashed border-black"></span>
 
           <div
             class="relative flex h-full transform items-end border-2 border-black bg-white transition-transform group-hover:-translate-x-2 group-hover:-translate-y-2">
             <div class="p-4 !pt-0 transition-opacity group-hover:absolute group-hover:opacity-0 sm:p-6 lg:p-8">
-              <svg class="size-10 sm:size-12" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 64 64">
+              <svg class="size-10 sm:size-12" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
+                height="100" viewBox="0 0 64 64">
                 <path
                   d="M32 6C17.641 6 6 17.641 6 32c0 12.277 8.512 22.56 19.955 25.286-.592-.141-1.179-.299-1.755-.479V50.85c0 0-.975.325-2.275.325-3.637 0-5.148-3.245-5.525-4.875-.229-.993-.827-1.934-1.469-2.509-.767-.684-1.126-.686-1.131-.92-.01-.491.658-.471.975-.471 1.625 0 2.857 1.729 3.429 2.623 1.417 2.207 2.938 2.577 3.721 2.577.975 0 1.817-.146 2.397-.426.268-1.888 1.108-3.57 2.478-4.774-6.097-1.219-10.4-4.716-10.4-10.4 0-2.928 1.175-5.619 3.133-7.792C19.333 23.641 19 22.494 19 20.625c0-1.235.086-2.751.65-4.225 0 0 3.708.026 7.205 3.338C28.469 19.268 30.196 19 32 19s3.531.268 5.145.738c3.497-3.312 7.205-3.338 7.205-3.338.567 1.474.65 2.99.65 4.225 0 2.015-.268 3.19-.432 3.697C46.466 26.475 47.6 29.124 47.6 32c0 5.684-4.303 9.181-10.4 10.4 1.628 1.43 2.6 3.513 2.6 5.85v8.557c-.576.181-1.162.338-1.755.479C49.488 54.56 58 44.277 58 32 58 17.641 46.359 6 32 6zM33.813 57.93C33.214 57.972 32.61 58 32 58 32.61 58 33.213 57.971 33.813 57.93zM37.786 57.346c-1.164.265-2.357.451-3.575.554C35.429 57.797 36.622 57.61 37.786 57.346zM32 58c-.61 0-1.214-.028-1.813-.07C30.787 57.971 31.39 58 32 58zM29.788 57.9c-1.217-.103-2.411-.289-3.574-.554C27.378 57.61 28.571 57.797 29.788 57.9z">
                 </path>
@@ -164,7 +304,101 @@
         </a>
       </div>
     </div>
+    <div class="md:grid grid-cols-12 gap-4 mx-8 block">
+      <div class="col-span-4 mt-8">
+        <a href="https://shop.tensan.dev" class="group relative block h-64 sm:h-80 lg:h-96">
+          <span class="absolute inset-0 border-2 border-dashed border-black"></span>
 
+          <div
+            class="relative flex h-full transform items-end border-2 border-black bg-white transition-transform group-hover:-translate-x-2 group-hover:-translate-y-2">
+            <div class="p-4 !pt-0 transition-opacity group-hover:absolute group-hover:opacity-0 sm:p-6 lg:p-8">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-10 sm:size-12">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
+              </svg>
+
+
+              <h2 class="mt-4 text-xl font-medium sm:text-2xl">テンの小遣い屋</h2>
+            </div>
+
+            <div
+              class="absolute p-4 opacity-0 transition-opacity group-hover:relative group-hover:opacity-100 sm:p-6 lg:p-8">
+              <h3 class="mt-4 text-xl font-medium sm:text-2xl">テンの小遣い屋</h3>
+
+              <p class="mt-4 text-sm sm:text-base">
+                ここで学費とその他に何かを買ったり遊ぶためにグッズを販売したいです!!!<br />テンを応援しましょう!!!
+              </p>
+
+              <p class="mt-8 font-bold">もっと見る→（準備中）</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-span-4 my-8">
+        <a href="#" class="group relative block h-64 sm:h-80 lg:h-96">
+          <span class="absolute inset-0 border-2 border-dashed border-black"></span>
+
+          <div
+            class="relative flex h-full transform items-end border-2 border-black bg-white transition-transform group-hover:-translate-x-2 group-hover:-translate-y-2">
+            <div class="p-4 !pt-0 transition-opacity group-hover:absolute group-hover:opacity-0 sm:p-6 lg:p-8">
+              <svg class="size-10 sm:size-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z" />
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z" />
+              </svg>
+              <h2 class="mt-4 text-xl font-medium sm:text-2xl">いっぱい準備中!!!</h2>
+            </div>
+
+            <div
+              class="absolute p-4 opacity-0 transition-opacity group-hover:relative group-hover:opacity-100 sm:p-6 lg:p-8">
+              <h3 class="mt-4 text-xl font-medium sm:text-2xl">いっぱい準備中!!!</h3>
+
+              <p class="mt-4 text-sm sm:text-base">
+                お小遣いを稼ぐために頑張ります！！！<br />うおおおおおおおおおお!!!
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-span-4 my-8">
+      </div>
+    </div>
+    <!-- Card Section -->
+<div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+  <!-- Grid -->
+  <div class="flex flex-col text-center w-full mb-20">
+    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">仲良し</h1>
+    <p class="lg:w-2/3 mx-auto leading-relaxed text-base">一緒にリンク共有しましょう!?<br/>(* 'ᵕ' )ｲｲﾖｯ!(* 'ᵕ' )ｲｲﾖｯ!(* 'ᵕ' )ｲｲﾖｯ!</p>
+  </div>
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
+    <!-- Card -->
+    <a class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-md transition" href="https://x.com/tensandev">
+      <div class="p-4 md:p-5">
+        <div class="flex justify-between items-center gap-x-3">
+          <div class="grow">
+            <div class="flex items-center gap-x-3">
+              <img class="size-[38px] rounded-full" src="/image/favicon.ico" alt="Avatar">
+              <div class="grow">
+                <h3 class="group-hover:text-blue-600 font-semibold text-gray-800">
+                  テンさん/Tensan
+                </h3>
+              </div>
+            </div>
+          </div>
+          <div>
+            <svg class="shrink-0 size-5 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </div>
+        </div>
+      </div>
+    </a>
+    <!-- End Card -->
+  </div>
+  <!-- End Grid -->
+</div>
+<!-- End Card Section -->
   </main>
 </body>
 
