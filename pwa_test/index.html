@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PIN入力</title>
+  <link href="/dist/style.css" rel="stylesheet">
+  <script>
+    if (navigator.serviceWorker) {
+      navigator.serviceWorker.register('/pwa_test/service-worker.js')
+    }
+  </script>
+  <style>
+    .dot {
+      transition: background-color 0.3s ease;
+    }
+  </style>
+</head>
+
+<body class="h-dvh flex items-center justify-center bg-pink-50">
+  <div class="flex flex-col items-center w-full max-w-md">
+    <div class="mb-6">
+      <div id="pin-message" class="text-center text-xl mb-10">
+        <svg class="w-8 h-auto mx-auto mb-2" width="35" height="35" viewBox="0 0 35 35" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M17.5 2.33333C13.0033 2.33333 9.33333 6.00327 9.33333 10.5V12.8333H7C5.71083 12.8333 4.66667 13.8775 4.66667 15.1667V29.1667C4.66667 30.4558 5.71083 31.5 7 31.5H28C29.2892 31.5 30.3333 30.4558 30.3333 29.1667V15.1667C30.3333 13.8775 29.2892 12.8333 28 12.8333H25.6667V10.5C25.6667 6.15017 22.2093 2.64665 17.9147 2.41764C17.7828 2.36449 17.6422 2.33592 17.5 2.33333ZM17.5 4.66666C20.7359 4.66666 23.3333 7.26405 23.3333 10.5V12.8333H11.6667V10.5C11.6667 7.26405 14.2641 4.66666 17.5 4.66666Z"
+            fill="black" />
+        </svg>
+        <p id="pin-message-pin" class="text-gray-800 text-base">PINを入力してください</p>
+      </div>
+      <form id="pinForm" action="https://tensandev.github.io" method="GET">
+        <div class="flex justify-center mb-4" id="dots-container">
+        </div>
+        <div class="grid grid-cols-3 gap-4">
+          <button type="button" class="h-16 w-16 bg-pink-50 text-xl font-bold rounded-full"
+            onclick="addDigit(1)">1</button>
+          <button type="button" class="h-16 w-16 bg-pink-50 text-xl font-bold rounded-full"
+            onclick="addDigit(2)">2</button>
+          <button type="button" class="h-16 w-16 bg-pink-50 text-xl font-bold rounded-full"
+            onclick="addDigit(3)">3</button>
+          <button type="button" class="h-16 w-16 bg-pink-50 text-xl font-bold rounded-full"
+            onclick="addDigit(4)">4</button>
+          <button type="button" class="h-16 w-16 bg-pink-50 text-xl font-bold rounded-full"
+            onclick="addDigit(5)">5</button>
+          <button type="button" class="h-16 w-16 bg-pink-50 text-xl font-bold rounded-full"
+            onclick="addDigit(6)">6</button>
+          <button type="button" class="h-16 w-16 bg-pink-50 text-xl font-bold rounded-full"
+            onclick="addDigit(7)">7</button>
+          <button type="button" class="h-16 w-16 bg-pink-50 text-xl font-bold rounded-full"
+            onclick="addDigit(8)">8</button>
+          <button type="button" class="h-16 w-16 bg-pink-50 text-xl font-bold rounded-full"
+            onclick="addDigit(9)">9</button>
+          <div class="col-span-3 flex justify-center">
+            <button type="button" class="h-16 w-16 bg-pink-50 text-xl font-bold rounded-full"
+              onclick="addDigit(0)">0</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    let pin = "";
+    let dotsContainer = document.getElementById("dots-container");
+    let pinMessage = document.getElementById("pin-message-pin");
+
+    function addDigit(digit) {
+      if (pin.length < 6) {
+        pin += digit;
+
+        // 点を追加
+        let newDot = document.createElement("div");
+        newDot.classList.add("w-3", "h-3", "bg-black", "rounded-full", "dot", "mr-2");
+        dotsContainer.appendChild(newDot);
+
+        // メッセージを空白にする
+        pinMessage.textContent = "　";
+
+        // 6桁入力されたらフォーム送信
+        if (pin.length === 6) {
+          submitPin();
+        }
+      }
+    }
+
+    function submitPin() {
+      const form = document.getElementById("pinForm");
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = "pin";
+      input.value = pin;
+      form.appendChild(input);
+      form.submit();
+    }
+  </script>
+</body>
+
+</html>
